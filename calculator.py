@@ -10,7 +10,10 @@ class Calculator(ctk.CTk):
         self.title('Calculator')
         ctk.set_appearance_mode('System')
 
+        # configure grid
+        self.rowconfigure(0, weight=1)
+
         # text box for calculations
-        self.txt_calculations = ctk.CTkTextbox(self, height=120, width=380)
-        self.txt_calculations.grid(column=0, row=0, padx=10, pady=10)
+        self.txt_calculations = ctk.CTkTextbox(self, height=120)
+        self.txt_calculations.grid(column=0, row=0, padx=10, pady=10, sticky='new')
         
