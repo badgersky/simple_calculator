@@ -30,7 +30,32 @@ class Calculator(ctk.CTk):
 
         # buttons
         # number buttons 
-        self.create_number_buttons()
+        self.btn_1 = ctk.CTkButton(self.btn_frame, height=30, width=30, text='1', command=lambda: self.input_numbers_operators('1'))
+        self.btn_2 = ctk.CTkButton(self.btn_frame, height=30, width=30, text='2', command=lambda: self.input_numbers_operators('2'))
+        self.btn_3 = ctk.CTkButton(self.btn_frame, height=30, width=30, text='3', command=lambda: self.input_numbers_operators('3'))
+        self.btn_4 = ctk.CTkButton(self.btn_frame, height=30, width=30, text='4', command=lambda: self.input_numbers_operators('4'))
+        self.btn_5 = ctk.CTkButton(self.btn_frame, height=30, width=30, text='5', command=lambda: self.input_numbers_operators('5'))
+        self.btn_6 = ctk.CTkButton(self.btn_frame, height=30, width=30, text='6', command=lambda: self.input_numbers_operators('6'))
+        self.btn_7 = ctk.CTkButton(self.btn_frame, height=30, width=30, text='7', command=lambda: self.input_numbers_operators('7'))
+        self.btn_8 = ctk.CTkButton(self.btn_frame, height=30, width=30, text='8', command=lambda: self.input_numbers_operators('8'))
+        self.btn_9 = ctk.CTkButton(self.btn_frame, height=30, width=30, text='9', command=lambda: self.input_numbers_operators('9'))
+        self.btn_0 = ctk.CTkButton(self.btn_frame, height=30, width=30, text='0', command=lambda: self.input_numbers_operators('0'))
+        self.btn_open = ctk.CTkButton(self.btn_frame, height=30, width=30, text='(', command=lambda: self.input_numbers_operators('('))
+        self.btn_close = ctk.CTkButton(self.btn_frame, height=30, width=30, text=')', command=lambda: self.input_numbers_operators(')'))
+
+        self.btn_1.grid(row=0, column=0, padx=5, pady=5, sticky='nsew')
+        self.btn_2.grid(row=0, column=1, padx=5, pady=5, sticky='nsew')
+        self.btn_3.grid(row=0, column=2, padx=5, pady=5, sticky='nsew')
+        self.btn_4.grid(row=1, column=0, padx=5, pady=5, sticky='nsew')
+        self.btn_5.grid(row=1, column=1, padx=5, pady=5, sticky='nsew')
+        self.btn_6.grid(row=1, column=2, padx=5, pady=5, sticky='nsew')
+        self.btn_7.grid(row=2, column=0, padx=5, pady=5, sticky='nsew')
+        self.btn_8.grid(row=2, column=1, padx=5, pady=5, sticky='nsew')
+        self.btn_9.grid(row=2, column=2, padx=5, pady=5, sticky='nsew')
+        self.btn_0.grid(row=3, column=1, padx=5, pady=5, sticky='nsew')
+        self.btn_close.grid(row=3, column=2, padx=5, pady=5, sticky='nsew')
+        self.btn_open.grid(row=3, column=0, padx=5, pady=5, sticky='nsew')
+
 
         # operator buttons
         self.btn_add = ctk.CTkButton(self.btn_frame, height=30, width=30, text='+')
@@ -50,18 +75,5 @@ class Calculator(ctk.CTk):
         self.btn_calc.grid(row=2, column=3, columnspan=2, padx=5, pady=5, sticky='nsew')
         self.btn_clear.grid(row=3, column=3, columnspan=2, padx=5, pady=5, sticky='nsew')
 
-    def create_number_buttons(self):
-        button_num = 1
-        for row in range(4):
-            for col in range(3):
-                if row != 3:
-                    new_btn = ctk.CTkButton(self.btn_frame, height=30, width=30, text=str(button_num))
-                    button_num += 1
-                else:
-                    if col == 0:
-                        new_btn = ctk.CTkButton(self.btn_frame, height=30, width=30, text='(')
-                    if col == 1:
-                        new_btn = ctk.CTkButton(self.btn_frame, height=30, width=30, text='0')
-                    if col == 2:
-                        new_btn = ctk.CTkButton(self.btn_frame, height=30, width=30, text=')')
-                new_btn.grid(row=row, column=col, padx=5, pady=5, sticky='nsew')
+    def input_numbers_operators(self, text):
+        print(text)
