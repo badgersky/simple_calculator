@@ -98,10 +98,11 @@ class Calculator(ctk.CTk):
         # checks if input consists of numbers and acceptable operators
         calculations = self.txt_calculations.get('0.0', 'end').strip()
         calc_copy = calculations[:]
+
         for operator in '+-/*().':
             calc_copy = calc_copy.replace(operator, '')
         
-        if not calc_copy.isnumeric():
+        if not calc_copy.isnumeric() or '..' in calculations:
             messagebox.showerror('Wrong input', 'Something went wrong!')
         else:
             return calculations
