@@ -1,4 +1,5 @@
 import customtkinter as ctk
+from tkinter import messagebox
 
 
 class Calculator(ctk.CTk):
@@ -84,15 +85,31 @@ class Calculator(ctk.CTk):
         self.txt_calculations.insert('0.0', str(result))
 
     def calculate_result(self):
-        calculations = self.txt_calculations.get('0.0', 'end')
+        calculations = self.validate_calculations()
         try:
             result = eval(calculations)
         except ZeroDivisionError:
             result = 'You cannot divide by 0'
         return result
 
+    def validate_calculations(self):
+        calculations = self.txt_calculations.get('0.0', 'end').strip()
+        calc_copy = calculations[:]
+        for operator in '+-/*()':
+            calc_copy = calc_copy.replace(operator, '')
+            print(calc_copy)
+        
+        if not calc_copy.isnumeric():
+            messagebox.showerror('Wrong input', 'Something went wrong!')
+        else:
+            return calculations
+
     def clear_textbox(self):
         self.txt_calculations.delete('0.0', 'end')
 
     def delete_one_character(self):
         self.txt_calculations.delete('end-2c', 'end')
+
+
+if __name__ == '__main__':
+    pass
