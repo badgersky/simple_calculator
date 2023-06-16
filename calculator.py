@@ -68,7 +68,7 @@ class Calculator(ctk.CTk):
         self.btn_multiply.grid(row=1, column=4, padx=5, pady=5, sticky='nsew')
 
         # calculate and clear button
-        self.btn_calc = ctk.CTkButton(self.btn_frame, height=30, text='=')
+        self.btn_calc = ctk.CTkButton(self.btn_frame, height=30, text='=', command=self.display_result)
         self.btn_clear = ctk.CTkButton(self.btn_frame, height=30, text='C')
 
         self.btn_calc.grid(row=2, column=3, columnspan=2, padx=5, pady=5, sticky='nsew')
@@ -76,3 +76,13 @@ class Calculator(ctk.CTk):
 
     def input_numbers_operators(self, text):
         self.txt_calculations.insert('end', text)
+
+    def display_result(self):
+        result = self.calculate_result()
+        self.txt_calculations.delete('0.0', 'end')
+        self.txt_calculations.insert('0.0', str(result))
+
+    def calculate_result(self):
+        calculations = self.txt_calculations.get('0.0', 'end')
+        return eval(calculations)
+    
