@@ -69,7 +69,7 @@ class Calculator(ctk.CTk):
 
         # calculate and clear button
         self.btn_calc = ctk.CTkButton(self.btn_frame, height=30, text='=', command=self.display_result)
-        self.btn_clear = ctk.CTkButton(self.btn_frame, height=30, text='C')
+        self.btn_clear = ctk.CTkButton(self.btn_frame, height=30, text='C', command=self.clear_textbox)
 
         self.btn_calc.grid(row=2, column=3, columnspan=2, padx=5, pady=5, sticky='nsew')
         self.btn_clear.grid(row=3, column=3, columnspan=2, padx=5, pady=5, sticky='nsew')
@@ -86,3 +86,5 @@ class Calculator(ctk.CTk):
         calculations = self.txt_calculations.get('0.0', 'end')
         return eval(calculations)
     
+    def clear_textbox(self):
+        self.txt_calculations.delete('0.0', 'end')
