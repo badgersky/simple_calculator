@@ -24,8 +24,7 @@ class Calculator(ctk.CTk):
         self.btn_frame.grid(column=0, row=1, padx=10, pady=10, sticky='nsew')
 
         self.btn_frame.rowconfigure((0, 1, 2, 3), weight=1)
-        self.btn_frame.columnconfigure((0, 1, 2), weight=1)
-        self.btn_frame.columnconfigure((3, 4), weight=2)
+        self.btn_frame.columnconfigure((0, 1, 2, 3, 4), weight=1)
 
         # buttons
         # number buttons 
@@ -69,10 +68,12 @@ class Calculator(ctk.CTk):
 
         # calculate and clear button
         self.btn_calc = ctk.CTkButton(self.btn_frame, height=30, text='=', command=self.display_result)
-        self.btn_clear = ctk.CTkButton(self.btn_frame, height=30, text='C', command=self.clear_textbox)
+        self.btn_clear = ctk.CTkButton(self.btn_frame, height=30, width=30, text='C', command=self.clear_textbox)
+        self.btn_delete = ctk.CTkButton(self.btn_frame, height=30, width=30, text='Del', command=self.delete_one_character)
 
         self.btn_calc.grid(row=2, column=3, columnspan=2, padx=5, pady=5, sticky='nsew')
-        self.btn_clear.grid(row=3, column=3, columnspan=2, padx=5, pady=5, sticky='nsew')
+        self.btn_clear.grid(row=3, column=3, padx=5, pady=5, sticky='nsew')
+        self.btn_delete.grid(row=3, column=4, padx=5, pady=5, sticky='nsew')
 
     def input_numbers_operators(self, text):
         self.txt_calculations.insert('end', text)
@@ -88,3 +89,6 @@ class Calculator(ctk.CTk):
     
     def clear_textbox(self):
         self.txt_calculations.delete('0.0', 'end')
+
+    def delete_one_character(self):
+        self.txt_calculations.delete('end-2c', 'end')
