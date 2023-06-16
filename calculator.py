@@ -85,8 +85,12 @@ class Calculator(ctk.CTk):
 
     def calculate_result(self):
         calculations = self.txt_calculations.get('0.0', 'end')
-        return eval(calculations)
-    
+        try:
+            result = eval(calculations)
+        except ZeroDivisionError:
+            result = 'You cannot divide by 0'
+        return result
+
     def clear_textbox(self):
         self.txt_calculations.delete('0.0', 'end')
 
