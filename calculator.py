@@ -97,7 +97,6 @@ class Calculator(ctk.CTk):
         calc_copy = calculations[:]
         for operator in '+-/*()':
             calc_copy = calc_copy.replace(operator, '')
-            print(calc_copy)
         
         if not calc_copy.isnumeric():
             messagebox.showerror('Wrong input', 'Something went wrong!')
