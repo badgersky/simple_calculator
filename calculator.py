@@ -18,6 +18,7 @@ class Calculator(ctk.CTk):
         # text box for calculations
         self.txt_calculations = ctk.CTkTextbox(self, height=120)
         self.txt_calculations.grid(column=0, row=0, padx=10, pady=10, sticky='new')
+        self.txt_calculations.configure(state='disabled')
         
         # frame for all buttons
         self.btn_frame = ctk.CTkFrame(self)
@@ -30,6 +31,17 @@ class Calculator(ctk.CTk):
         # buttons
         # number buttons 
         self.create_number_buttons()
+
+        # operator buttons
+        self.btn_add = ctk.CTkButton(self.btn_frame, height=30, width=30, text='+')
+        self.btn_subtract = ctk.CTkButton(self.btn_frame, height=30, width=30, text='-')
+        self.btn_divide = ctk.CTkButton(self.btn_frame, height=30, width=30, text='/')
+        self.btn_multiply = ctk.CTkButton(self.btn_frame, height=30, width=30, text='*')
+
+        self.btn_add.grid(row=0, column=3, padx=5, pady=5, sticky='nsew')
+        self.btn_subtract.grid(row=0, column=4, padx=5, pady=5, sticky='nsew')
+        self.btn_divide.grid(row=1, column=3, padx=5, pady=5, sticky='nsew')
+        self.btn_multiply.grid(row=1, column=4, padx=5, pady=5, sticky='nsew')
 
     def create_number_buttons(self):
         button_num = 1
@@ -45,5 +57,4 @@ class Calculator(ctk.CTk):
                         new_btn = ctk.CTkButton(self.btn_frame, height=30, width=30, text='0')
                     if col == 2:
                         new_btn = ctk.CTkButton(self.btn_frame, height=30, width=30, text=')')
-                new_btn.grid(row=row, column=col, padx=2, pady=2)
-                
+                new_btn.grid(row=row, column=col, padx=5, pady=5, sticky='nsew')
