@@ -61,18 +61,20 @@ class Calculator(ctk.CTk):
         self.btn_subtract = ctk.CTkButton(self.btn_frame, height=30, width=30, text='-', command=lambda: self.input_numbers_operators('-'))
         self.btn_divide = ctk.CTkButton(self.btn_frame, height=30, width=30, text='/', command=lambda: self.input_numbers_operators('/'))
         self.btn_multiply = ctk.CTkButton(self.btn_frame, height=30, width=30, text='*', command=lambda: self.input_numbers_operators('*'))
+        self.btn_period = ctk.CTkButton(self.btn_frame, height=30, width=30, text='.', command=lambda: self.input_numbers_operators('.'))
 
         self.btn_add.grid(row=0, column=3, padx=5, pady=5, sticky='nsew')
         self.btn_subtract.grid(row=0, column=4, padx=5, pady=5, sticky='nsew')
         self.btn_divide.grid(row=1, column=3, padx=5, pady=5, sticky='nsew')
         self.btn_multiply.grid(row=1, column=4, padx=5, pady=5, sticky='nsew')
+        self.btn_period.grid(row=2, column=3, padx=5, pady=5, sticky='nsew')
 
         # calculate and clear button
-        self.btn_calc = ctk.CTkButton(self.btn_frame, height=30, text='=', command=self.display_result)
+        self.btn_calc = ctk.CTkButton(self.btn_frame, height=30, width=30, text='=', command=self.display_result)
         self.btn_clear = ctk.CTkButton(self.btn_frame, height=30, width=30, text='C', command=self.clear_textbox)
         self.btn_delete = ctk.CTkButton(self.btn_frame, height=30, width=30, text='Del', command=self.delete_one_character)
 
-        self.btn_calc.grid(row=2, column=3, columnspan=2, padx=5, pady=5, sticky='nsew')
+        self.btn_calc.grid(row=2, column=4, padx=5, pady=5, sticky='nsew')
         self.btn_clear.grid(row=3, column=3, padx=5, pady=5, sticky='nsew')
         self.btn_delete.grid(row=3, column=4, padx=5, pady=5, sticky='nsew')
 
@@ -93,9 +95,10 @@ class Calculator(ctk.CTk):
         return result
 
     def validate_calculations(self):
+        # checks if input consists of numbers and acceptable operators
         calculations = self.txt_calculations.get('0.0', 'end').strip()
         calc_copy = calculations[:]
-        for operator in '+-/*()':
+        for operator in '+-/*().':
             calc_copy = calc_copy.replace(operator, '')
         
         if not calc_copy.isnumeric():
