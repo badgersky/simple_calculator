@@ -16,9 +16,8 @@ class Calculator(ctk.CTk):
         self.columnconfigure(0, weight=1)
 
         # text box for calculations
-        self.txt_calculations = ctk.CTkTextbox(self, height=170)
+        self.txt_calculations = ctk.CTkTextbox(self, height=170, font=("Helvetica", 24))
         self.txt_calculations.grid(column=0, row=0, padx=10, pady=10, sticky='new')
-        self.txt_calculations.configure(state='disabled')
         
         # frame for all buttons
         self.btn_frame = ctk.CTkFrame(self)
@@ -58,10 +57,10 @@ class Calculator(ctk.CTk):
 
 
         # operator buttons
-        self.btn_add = ctk.CTkButton(self.btn_frame, height=30, width=30, text='+')
-        self.btn_subtract = ctk.CTkButton(self.btn_frame, height=30, width=30, text='-')
-        self.btn_divide = ctk.CTkButton(self.btn_frame, height=30, width=30, text='/')
-        self.btn_multiply = ctk.CTkButton(self.btn_frame, height=30, width=30, text='*')
+        self.btn_add = ctk.CTkButton(self.btn_frame, height=30, width=30, text='+', command=lambda: self.input_numbers_operators('+'))
+        self.btn_subtract = ctk.CTkButton(self.btn_frame, height=30, width=30, text='-', command=lambda: self.input_numbers_operators('-'))
+        self.btn_divide = ctk.CTkButton(self.btn_frame, height=30, width=30, text='/', command=lambda: self.input_numbers_operators('/'))
+        self.btn_multiply = ctk.CTkButton(self.btn_frame, height=30, width=30, text='*', command=lambda: self.input_numbers_operators('*'))
 
         self.btn_add.grid(row=0, column=3, padx=5, pady=5, sticky='nsew')
         self.btn_subtract.grid(row=0, column=4, padx=5, pady=5, sticky='nsew')
@@ -76,4 +75,4 @@ class Calculator(ctk.CTk):
         self.btn_clear.grid(row=3, column=3, columnspan=2, padx=5, pady=5, sticky='nsew')
 
     def input_numbers_operators(self, text):
-        print(text)
+        self.txt_calculations.insert('end', text)
