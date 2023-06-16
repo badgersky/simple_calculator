@@ -92,6 +92,11 @@ class Calculator(ctk.CTk):
             result = eval(calculations)
         except ZeroDivisionError:
             result = 'You cannot divide by 0'
+
+        if '.' in str(result):
+            decimal_part = str(result).split('.')[1]
+            if len(decimal_part) == 1 and decimal_part == '0':
+                return str(int(result))
         return result
 
     def validate_calculations(self):
